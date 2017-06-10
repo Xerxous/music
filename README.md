@@ -1,5 +1,6 @@
-# discordPhone
-voice listening on discord
+# discordYoutube - PIANO
+Youtube streaming on discord
+Standard project structure
 
 Make sure FFMPEG is installed
 Needs global `nodemon` and `babel-cli babel-node`
