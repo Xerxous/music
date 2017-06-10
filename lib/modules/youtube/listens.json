@@ -1,5 +1,5 @@
 {
-  "\/piano (https?\\:\/\/)?(www\\.youtube\\.com)\/.+": "youtubePlay",
+  "\/piano (https?\\:\/\/?www\\.youtube\\.com\/.+)": "youtubePlay",
   "\/piano create alias ([0-9a-zA-Z]+) (https?\\:\/\/?www\\.youtube\\.com\/.+)": "youtubeCreateAlias",
   "\/piano delete alias ([0-9a-zA-Z]+)": "youtubeDeleteAlias"
 }

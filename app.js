@@ -16,11 +16,13 @@ client.on('ready', () => {
   defaultVoiceChannel = client.channels.find('name', config.defaultVoiceChannel);
   if (defaultVoiceChannel) {
     broadcast = client.createVoiceBroadcast();
-    // defaultVoiceChannel.join();
+    defaultVoiceChannel.join();
     console.log(`joined ${config.defaultVoiceChannel} voice channel`);
   }
+  // expand the environment variable as necessary
   environment = {
     client,
+    config,
     broadcast,
     defaultChatChannel,
     defaultVoiceChannel
@@ -28,11 +30,14 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-  for (let module in modules) {
-    for (let key in modules[module].listens) {
-      if (message.content.match(key)) {
-        modules[module].module[modules[module].listens[key]](environment, message);
-        break;
+  if (message.author.id != config.botId) {
+    for (let module in modules) {
+      for (let key in modules[module].listens) {
+        let match = message.content.match(key);
+        if (match) {
+          modules[module].module[modules[module].listens[key]](environment, message, match);
+          break;
+        }
       }
     }
   }
