@@ -1,24 +1,25 @@
 import Discord from 'discord.js'
+import ytdl from 'ytdl-core'
 import secret from './secret.json'
+
 const client = new Discord.Client();
-const broadcast = client.createVoiceBroadcast()
+const broadcast = client.createVoiceBroadcast();
 
 client.on('ready', () => {
   console.log('I am ready!');
-  client.channels.find('name', 'Music Room').join()
-    .then(connection => {
-      console.log('Connected!')
-      broadcast.playFile('./music/tuvan.mp3')
-      for (const connection of client.voiceConnections.values()) {
-        connection.playBroadcast(broadcast)
-      }
-    })
-    .catch(console.error);
+
+  client.channels.find('name', 'Music Room').join();
 });
 
 client.on('message', message => {
-  if (message.content === 'ping') {
-    message.reply('pon');
+  let regex = message.content.match(/\/romano (https?\:\/\/)?(www\.youtube\.com)\/.+/);
+  let channel = client.channels.find('name', 'Music Room');
+
+  if (regex) {
+    console.log(regex);
+    let stream = ytdl(message.content, { filter : 'audioonly' });
+    broadcast.playStream(stream);
+    const dispatcher = client.voiceConnections.last().playBroadcast(broadcast);
   }
 });
 
