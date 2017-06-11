@@ -1,0 +1,7 @@
+{
+  "playResponse": "Playing requested youtube video...",
+  "badLinkResponse": "Invalid YouTube link",
+  "playStopResponse": "Stopping all broadcasts",
+  "playPauseResponse": "Pausing broadcast",
+  "playResumeResponse": "Resuming broadcast"
+}

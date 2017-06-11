@@ -1,23 +1,26 @@
-import Discord from 'discord.js'
-import modules from './lib/initializer'
-import config from './config'
-import secret from './secret'
+import Discord from 'discord.js';
+import modules from './lib/initializer';
+import config from './config';
+import secret from './secret';
+import colors from 'colors';
 
 const client = new Discord.Client();
 let environment;
 let broadcast;
 let defaultChatChannel;
 let defaultVoiceChannel;
+let mods;
 
 // Configures all settings and environment variables
 client.on('ready', () => {
-  console.log(`${config.botName} is online`);
+  console.log(`***${config.botName} is online***`.cyan.underline.bold);
   defaultChatChannel = client.channels.find('name', config.defaultChatChannel);
   defaultVoiceChannel = client.channels.find('name', config.defaultVoiceChannel);
+  mods = modules(config.commandPrefix);
   if (defaultVoiceChannel) {
     broadcast = client.createVoiceBroadcast();
     defaultVoiceChannel.join();
-    console.log(`joined ${config.defaultVoiceChannel} voice channel`);
+    console.log(`joined ${config.defaultVoiceChannel} voice channel`.yellow);
   }
   // expand the environment variable as necessary
   environment = {
@@ -31,11 +34,13 @@ client.on('ready', () => {
 
 client.on('message', message => {
   if (message.author.id != config.botId) {
-    for (let module in modules) {
-      for (let key in modules[module].listens) {
-        let match = message.content.match(key);
+    console.log(`Message sent: ${message.content}`);
+    for (let module in mods) {
+      for (let key in mods[module].listens) {
+        let match = message.content.match(`${config.commandPrefix} ${key}`);
         if (match) {
-          modules[module].module[modules[module].listens[key]](environment, message, match);
+          console.log(`Found match. Calling ${mods[module].listens[key]}`);
+          mods[module].module[mods[module].listens[key]](environment, message, match);
           break;
         }
       }
