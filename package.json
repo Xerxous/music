@@ -4,7 +4,9 @@
   "description": "voice listening on discord",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js --exec babel-node --ignore '*.json'"
+    "start": "nodemon app.js --exec babel-node --ignore '*.json'",
+    "compile": "babel . --ignore node_modules,README.md --out-dir .out --copy-files",
+    "prod": "forever start ./.out/app.js -e err.log"
   },
   "repository": {
     "type": "git",
