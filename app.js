@@ -33,7 +33,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-  if (message.author.id != config.botId) {
+  if (message.author.id == config.romanoId) {
     console.log(`Message sent: ${message.content}`);
     for (let module in mods) {
       for (let key in mods[module].listens) {
