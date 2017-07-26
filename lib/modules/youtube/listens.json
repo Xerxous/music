@@ -1,4 +1,5 @@
 {
+  "(https?\\:\/\/?youtu.be\/.+)": "youtubePlay",
   "(https?\\:\/\/?www\\.youtube\\.com\/.+)": "youtubePlay",
   "stop": "youtubePlayStop",
   "resume": "youtubePlayResume",

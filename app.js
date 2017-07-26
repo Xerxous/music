@@ -33,16 +33,14 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-  if (message.author.id == config.romanoId) {
-    console.log(`Message sent: ${message.content}`);
-    for (let module in mods) {
-      for (let key in mods[module].listens) {
-        let match = message.content.match(`${config.commandPrefix} ${key}`);
-        if (match) {
-          console.log(`Found match. Calling ${mods[module].listens[key]}`);
-          mods[module].module[mods[module].listens[key]](environment, message, match);
-          break;
-        }
+  console.log(`Message sent: ${message.content}`);
+  for (let module in mods) {
+    for (let key in mods[module].listens) {
+      let match = message.content.match(`${config.commandPrefix} ${key}`);
+      if (match) {
+        console.log(`Found match. Calling ${mods[module].listens[key]}`);
+        mods[module].module[mods[module].listens[key]](environment, message, match);
+        break;
       }
     }
   }

@@ -1,8 +1,7 @@
 {
-  "botName": "PIANO",
-  "botId": "310151639505960971",
-  "romanoId": "313182691157606401",
+  "botName": "MUSIC",
+  "botId": "333412290512814082",
   "defaultChatChannel": "",
-  "defaultVoiceChannel": "Music Room",
-  "commandPrefix": "\/piano"
+  "defaultVoiceChannel": "노래",
+  "commandPrefix": "\/music"
 }
