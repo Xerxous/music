@@ -19,7 +19,7 @@ client.on('ready', () => {
   mods = modules(config.commandPrefix);
   if (defaultVoiceChannel) {
     broadcast = client.createVoiceBroadcast();
-    defaultVoiceChannel.join();
+    //defaultVoiceChannel.join();
     console.log(`joined ${config.defaultVoiceChannel} voice channel`.yellow);
   }
   // expand the environment variable as necessary
@@ -33,6 +33,9 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+  if (!client.voiceConnections.last()) {
+    environment.defaultVoiceChannel.join();
+  }
   console.log(`Message sent: ${message.content}`);
   for (let module in mods) {
     for (let key in mods[module].listens) {
