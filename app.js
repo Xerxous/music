@@ -10,6 +10,7 @@ let broadcast;
 let defaultChatChannel;
 let defaultVoiceChannel;
 let mods;
+let queue;
 
 // Configures all settings and environment variables
 client.on('ready', () => {
@@ -17,13 +18,15 @@ client.on('ready', () => {
   defaultChatChannel = client.channels.find('name', config.defaultChatChannel);
   defaultVoiceChannel = client.channels.find('name', config.defaultVoiceChannel);
   mods = modules(config.commandPrefix);
+  queue = [];
   if (defaultVoiceChannel) {
     broadcast = client.createVoiceBroadcast();
-    //defaultVoiceChannel.join();
+    defaultVoiceChannel.join();
     console.log(`joined ${config.defaultVoiceChannel} voice channel`.yellow);
   }
   // expand the environment variable as necessary
   environment = {
+    queue,
     client,
     config,
     broadcast,

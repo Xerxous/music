@@ -1,7 +1,9 @@
 {
-  "(https?\\:\/\/?youtu.be\/.+)": "youtubePlay",
-  "(https?\\:\/\/?www\\.youtube\\.com\/.+)": "youtubePlay",
-  "stop": "youtubePlayStop",
-  "resume": "youtubePlayResume",
-  "pause": "youtubePlayPause"
+  "(https?\\:\/\/?youtu.be\/.+)": "addQueue",
+  "(https?\\:\/\/?www\\.youtube\\.com\/.+)": "addQueue",
+  "list": "listQueue",
+  "next" : "next",
+  "stop": "stop",
+  "resume": "resume",
+  "pause": "pause"
 }
