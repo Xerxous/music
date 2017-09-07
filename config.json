@@ -3,5 +3,5 @@
   "botId": "",
   "defaultChatChannel": "music",
   "defaultVoiceChannel": "노래",
-  "commandPrefix": "\/music"
+  "commandPrefix": "\/q"
 }
