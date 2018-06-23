@@ -1,7 +1,7 @@
 {
-  "botName": "MUSIC",
-  "botId": "333412290512814082",
-  "defaultChatChannel": "",
-  "defaultVoiceChannel": "노래",
-  "commandPrefix": "\/music"
+  "botName": "music",
+  "botId": "460172820723531797",
+  "defaultChatChannel": "general",
+  "defaultVoiceChannel": "General",
+  "commandPrefix": "\/q"
 }

@@ -19,7 +19,7 @@ client.on('ready', () => {
   mods = modules(config.commandPrefix);
   if (defaultVoiceChannel) {
     broadcast = client.createVoiceBroadcast();
-    //defaultVoiceChannel.join();
+    defaultVoiceChannel.join();
     console.log(`joined ${config.defaultVoiceChannel} voice channel`.yellow);
   }
   // expand the environment variable as necessary
