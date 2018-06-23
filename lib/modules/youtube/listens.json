@@ -3,7 +3,7 @@
   "(https?\\:\/\/?www\\.youtube\\.com\/.+)": "addQueue",
   "list": "listQueue",
   "next" : "next",
-  "stop": "stop",
   "resume": "resume",
-  "pause": "pause"
+  "pause": "pause",
+  "restart" :"restart"
 }
